@@ -4,3 +4,5 @@ pub mod longest_substring_without_repeating_characters;
 pub mod max_subset;
 /// https://leetcode.com/problems/string-to-integer-atoi/
 pub mod string_to_integer;
+/// https://leetcode.com/problems/palindrome-number/
+pub mod palindrome_number;
