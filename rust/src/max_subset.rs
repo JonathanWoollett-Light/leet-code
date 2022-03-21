@@ -23,12 +23,12 @@ pub fn max_subset_iterative(x: &[i32]) -> i32 {
         .collect::<Vec<_>>();
     // Removes consecutive zeros
     stripped_x.dedup_by(|a, b| *a == 0 && a == b);
-    println!(
-        "{} -> {} (-{:.2?}%)",
-        x.len(),
-        stripped_x.len(),
-        100. * (1. - stripped_x.len() as f32 / x.len() as f32)
-    );
+    // println!(
+    //     "{} -> {} (-{:.2?}%)",
+    //     x.len(),
+    //     stripped_x.len(),
+    //     100. * (1. - stripped_x.len() as f32 / x.len() as f32)
+    // );
 
     // For testing we output the resulting new set
     std::fs::write(
@@ -49,18 +49,21 @@ pub fn max_subset_iterative(x: &[i32]) -> i32 {
     if let Some(0) = iter.peek() {
         iter.next();
     }
-    println!("max adds:\n");
+    // println!("max adds:\n");
+
     while let Some(next) = iter.next() {
         // At this point we know `next>0`, thus if `iter.next()==0` or `iter.next()==None` there is
         //  no competing subsequence.
         if let None = iter.peek() {
             max += next;
-            println!("{:05} {:010}", next, max);
+            // println!("{:05} {:010}", next, max);
+
             // We could call `iter.next()` here although we don't need to, as we know the loop will exit next condition check.
             // But this would let us join this case and the `Some(0)` case.
         } else if let Some(0) = iter.peek() {
             max += next;
-            println!("{:05} {:010}", next, max);
+            // println!("{:05} {:010}", next, max);
+
             // We call `.next()` to skip over the zero value such that `next` is either some non-zero value or none next iteration.
             // If we didnt dedup this would need to be peeking take while
             iter.next();
@@ -80,11 +83,12 @@ pub fn max_subset_iterative(x: &[i32]) -> i32 {
                 }
             }
             max += std::cmp::max(max_options[0], max_options[1]);
-            println!(
-                "{:05} {:010} (s) ",
-                std::cmp::max(max_options[0], max_options[1]),
-                max
-            );
+            // println!(
+            //     "{:05} {:010} (s) ",
+            //     std::cmp::max(max_options[0], max_options[1]),
+            //     max
+            // );
+
             // If we didnt dedup we would need a peeking take while here
         }
     }
@@ -95,7 +99,7 @@ mod tests {
     use super::{max_subset, max_subset_iterative};
     #[test]
     fn max_subset_testa() {
-        assert_eq!(max_subset_iterative(&[3,5,-7,8,10]), 15);
+        assert_eq!(max_subset_iterative(&[3, 5, -7, 8, 10]), 15);
     }
     #[test]
     fn max_subset_test0() {

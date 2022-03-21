@@ -1,5 +1,8 @@
 use criterion::{criterion_group, criterion_main, Criterion};
-use test_bin::{longest_substring_without_repeating_characters::*, string_to_integer::*, palindrome_number::*};
+use test_bin::{
+    longest_substring_without_repeating_characters::*, palindrome_number::*, partition_labels::*,
+    string_to_integer::*,
+};
 
 fn length_of_longest_substring_bench(c: &mut Criterion) {
     c.bench_function("abba", |b| {
@@ -34,18 +37,20 @@ fn atoi_bench(c: &mut Criterion) {
 }
 fn is_palindrome_bench(c: &mut Criterion) {
     c.bench_function("121", |b| b.iter(|| is_palindrome(121)));
-    c.bench_function("-121", |b| {
-        b.iter(|| is_palindrome(-121))
-    });
-    c.bench_function("123454321", |b| {
-        b.iter(|| is_palindrome(123454321))
-    });
+    c.bench_function("-121", |b| b.iter(|| is_palindrome(-121)));
+    c.bench_function("123454321", |b| b.iter(|| is_palindrome(123454321)));
     c.bench_function("10", |b| b.iter(|| is_palindrome(10)));
-    
-    c.bench_function("11", |b| {
-        b.iter(|| is_palindrome(11))
+
+    c.bench_function("11", |b| b.iter(|| is_palindrome(11)));
+}
+fn partition_labels_bench(c: &mut Criterion) {
+    c.bench_function("ababcbacadefegdehijhklij", |b| {
+        b.iter(|| partition_labels(String::from("ababcbacadefegdehijhklij")))
+    });
+    c.bench_function("eccbbbbdec", |b| {
+        b.iter(|| partition_labels(String::from("eccbbbbdec")))
     });
 }
-criterion_group!(benches, is_palindrome_bench);
+criterion_group!(benches, partition_labels_bench);
 // criterion_group!(benches, length_of_longest_substring_bench, atoi_bench);
 criterion_main!(benches);
