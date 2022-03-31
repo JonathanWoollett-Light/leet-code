@@ -1,7 +1,7 @@
 use criterion::{criterion_group, criterion_main, Criterion};
 use test_bin::{
     longest_substring_without_repeating_characters::*, palindrome_number::*, partition_labels::*,
-    string_to_integer::*,
+    string_to_integer::*,container_with_most_water::*
 };
 
 fn length_of_longest_substring_bench(c: &mut Criterion) {
@@ -51,6 +51,14 @@ fn partition_labels_bench(c: &mut Criterion) {
         b.iter(|| partition_labels(String::from("eccbbbbdec")))
     });
 }
-criterion_group!(benches, partition_labels_bench);
+fn container_with_most_water_bench(c: &mut Criterion) {
+    c.bench_function("[1,1]", |b| {
+        b.iter(|| max_area(vec![1,1]))
+    });
+    c.bench_function("[1,8,6,2,5,4,8,3,7]", |b| {
+        b.iter(|| max_area(vec![1,8,6,2,5,4,8,3,7]))
+    });
+}
+criterion_group!(benches, container_with_most_water_bench);
 // criterion_group!(benches, length_of_longest_substring_bench, atoi_bench);
 criterion_main!(benches);

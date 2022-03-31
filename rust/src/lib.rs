@@ -8,3 +8,5 @@ pub mod palindrome_number;
 pub mod partition_labels;
 /// https://leetcode.com/problems/string-to-integer-atoi/
 pub mod string_to_integer;
+/// https://leetcode.com/problems/container-with-most-water/
+pub mod container_with_most_water;
