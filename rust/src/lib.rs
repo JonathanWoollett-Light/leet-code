@@ -1,3 +1,7 @@
+/// https://leetcode.com/problems/container-with-most-water/
+pub mod container_with_most_water;
+/// https://leetcode.com/problems/longest-common-prefix/
+pub mod longest_common_prefix;
 /// https://leetcode.com/problems/longest-substring-without-repeating-characters/
 pub mod longest_substring_without_repeating_characters;
 /// https://www.hackerrank.com/challenges/max-array-sum/
@@ -6,7 +10,12 @@ pub mod max_subset;
 pub mod palindrome_number;
 /// https://leetcode.com/problems/partition-labels/
 pub mod partition_labels;
+/// https://leetcode.com/problems/roman-to-integer/
+pub mod roman_to_integer;
 /// https://leetcode.com/problems/string-to-integer-atoi/
 pub mod string_to_integer;
-/// https://leetcode.com/problems/container-with-most-water/
-pub mod container_with_most_water;
+/// https://leetcode.com/problems/valid-parentheses/
+pub mod valid_parentheses;
+
+/// https://leetcode.com/problems/merge-two-sorted-lists/
+pub mod two_sorted_lists;

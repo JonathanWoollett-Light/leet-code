@@ -8,7 +8,7 @@ fn index(x: char) -> usize {
 pub fn partition_labels(s: String) -> Vec<i32> {
     // We get the range of each character from the index of its first appearance to the index of
     //  its last appearance.
-    let mut ranges: [usize; 26] = [0;26];
+    let mut ranges: [usize; 26] = [0; 26];
     for (i, c) in s.chars().enumerate() {
         ranges[index(c)] = i + 1;
     }

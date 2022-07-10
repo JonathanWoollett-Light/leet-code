@@ -1,7 +1,7 @@
 use criterion::{criterion_group, criterion_main, Criterion};
 use test_bin::{
-    longest_substring_without_repeating_characters::*, palindrome_number::*, partition_labels::*,
-    string_to_integer::*,container_with_most_water::*
+    container_with_most_water::*, longest_substring_without_repeating_characters::*,
+    palindrome_number::*, partition_labels::*, roman_to_integer::*, string_to_integer::*,
 };
 
 fn length_of_longest_substring_bench(c: &mut Criterion) {
@@ -52,13 +52,18 @@ fn partition_labels_bench(c: &mut Criterion) {
     });
 }
 fn container_with_most_water_bench(c: &mut Criterion) {
-    c.bench_function("[1,1]", |b| {
-        b.iter(|| max_area(vec![1,1]))
-    });
+    c.bench_function("[1,1]", |b| b.iter(|| max_area(vec![1, 1])));
     c.bench_function("[1,8,6,2,5,4,8,3,7]", |b| {
-        b.iter(|| max_area(vec![1,8,6,2,5,4,8,3,7]))
+        b.iter(|| max_area(vec![1, 8, 6, 2, 5, 4, 8, 3, 7]))
     });
 }
-criterion_group!(benches, container_with_most_water_bench);
-// criterion_group!(benches, length_of_longest_substring_bench, atoi_bench);
+fn roman_to_int_bench(c: &mut Criterion) {
+    c.bench_function("III", |b| b.iter(|| roman_to_int(String::from("III"))));
+    c.bench_function("LVIII", |b| b.iter(|| roman_to_int(String::from("LVIII"))));
+    c.bench_function("MCMXCIV", |b| {
+        b.iter(|| roman_to_int(String::from("MCMXCIV")))
+    });
+}
+criterion_group!(benches, roman_to_int_bench);
+// criterion_group!(benches, container_with_most_water_bench, length_of_longest_substring_bench, atoi_bench);
 criterion_main!(benches);
