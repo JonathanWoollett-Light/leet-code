@@ -16,6 +16,5 @@ pub mod roman_to_integer;
 pub mod string_to_integer;
 /// https://leetcode.com/problems/valid-parentheses/
 pub mod valid_parentheses;
-
-/// https://leetcode.com/problems/merge-two-sorted-lists/
-pub mod two_sorted_lists;
+/// https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+pub mod remove_duplicates_from_sorted_array;

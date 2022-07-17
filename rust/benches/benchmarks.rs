@@ -2,6 +2,7 @@ use criterion::{criterion_group, criterion_main, Criterion};
 use test_bin::{
     container_with_most_water::*, longest_substring_without_repeating_characters::*,
     palindrome_number::*, partition_labels::*, roman_to_integer::*, string_to_integer::*,
+    remove_duplicates_from_sorted_array::*
 };
 
 fn length_of_longest_substring_bench(c: &mut Criterion) {
@@ -64,6 +65,11 @@ fn roman_to_int_bench(c: &mut Criterion) {
         b.iter(|| roman_to_int(String::from("MCMXCIV")))
     });
 }
-criterion_group!(benches, roman_to_int_bench);
+fn remove_duplicates_from_sorted_array_bench(c: &mut Criterion) {
+    c.bench_function("[1,1,2]", |b| b.iter_with_setup(|| vec![1,1,2],|mut vec| remove_duplicates(&mut vec)));
+    c.bench_function("[0,0,1,1,1,2,2,3,3,4]", |b| b.iter_with_setup(|| vec![0,0,1,1,1,2,2,3,3,4],|mut vec| remove_duplicates(&mut vec)));
+    c.bench_function("long", |b| b.iter_with_setup(|| vec![0,0,0,0,1,1,1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,20,21,22,25,27,28,29,29,29,29,29,29,29,29,29,30],|mut vec| remove_duplicates(&mut vec)));
+}
+criterion_group!(benches, remove_duplicates_from_sorted_array_bench);
 // criterion_group!(benches, container_with_most_water_bench, length_of_longest_substring_bench, atoi_bench);
 criterion_main!(benches);

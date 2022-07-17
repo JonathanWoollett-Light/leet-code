@@ -5,8 +5,7 @@ edition = "2021"
 [dependencies]
 
 [dev-dependencies]
-criterion = "0.3"
-
+criterion = "0.2.4"
 [[bench]]
 name = "benchmarks"
 harness = false
