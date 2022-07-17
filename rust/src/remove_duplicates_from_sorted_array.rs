@@ -9,9 +9,8 @@ pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
                 *nums.get_unchecked_mut(front) = *nums.get_unchecked(i);
             }
         }
-        (front+1) as i32
+        (front + 1) as i32
     }
-    
 }
 
 #[cfg(test)]
@@ -19,14 +18,14 @@ mod test {
     use super::*;
     #[test]
     fn remove_duplicates_one() {
-        let mut vec = vec![1,1,2];
-        assert_eq!(remove_duplicates(&mut vec),2);
-        assert_eq!(&vec[0..2],[1,2]);
+        let mut vec = vec![1, 1, 2];
+        assert_eq!(remove_duplicates(&mut vec), 2);
+        assert_eq!(&vec[0..2], [1, 2]);
     }
     #[test]
     fn remove_duplicates_two() {
-        let mut vec = vec![0,0,1,1,1,2,2,3,3,4];
-        assert_eq!(remove_duplicates(&mut vec),5);
-        assert_eq!(&vec[0..5],[0,1,2,3,4]);
+        let mut vec = vec![0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+        assert_eq!(remove_duplicates(&mut vec), 5);
+        assert_eq!(&vec[0..5], [0, 1, 2, 3, 4]);
     }
 }
