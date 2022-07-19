@@ -1,8 +1,9 @@
 use criterion::{criterion_group, criterion_main, Criterion};
 use test_bin::{
     container_with_most_water::*, longest_substring_without_repeating_characters::*,
-    palindrome_number::*, partition_labels::*, remove_duplicates_from_sorted_array::*,
-    roman_to_integer::*, string_to_integer::*,
+    palindrome_number::*, partition_labels::*, pascals_triangle::*,
+    remove_duplicates_from_sorted_array::*, remove_element::*, roman_to_integer::*,
+    string_to_integer::*,
 };
 
 fn length_of_longest_substring_bench(c: &mut Criterion) {
@@ -88,6 +89,34 @@ fn remove_duplicates_from_sorted_array_bench(c: &mut Criterion) {
         )
     });
 }
-criterion_group!(benches, remove_duplicates_from_sorted_array_bench);
+fn remove_element_bench(c: &mut Criterion) {
+    c.bench_function("[3,2,2,3]", |b| {
+        b.iter_with_setup(|| vec![3, 2, 2, 3], |mut vec| remove_element(&mut vec, 3))
+    });
+    c.bench_function("[0,1,2,2,3,0,4,2]", |b| {
+        b.iter_with_setup(
+            || vec![0, 1, 2, 2, 3, 0, 4, 2],
+            |mut vec| remove_element(&mut vec, 2),
+        )
+    });
+    c.bench_function("long", |b| {
+        b.iter_with_setup(
+            || {
+                vec![
+                    0, 1, 2, 2, 3, 0, 4, 2, 0, 1, 2, 2, 3, 0, 4, 2, 0, 1, 2, 2, 3, 0, 4, 2, 0, 1,
+                    2, 2, 3, 0, 4, 2, 0, 1, 2, 2, 3, 0, 4, 2, 0, 1, 2, 2, 3, 0, 4, 2,
+                ]
+            },
+            |mut vec| remove_element(&mut vec, 2),
+        )
+    });
+}
+fn pascals_triangle_bench(c: &mut Criterion) {
+    c.bench_function("5", |b| b.iter(|| generate(5)));
+    c.bench_function("10", |b| b.iter(|| generate(10)));
+    c.bench_function("20", |b| b.iter(|| generate(20)));
+}
+
+criterion_group!(benches, pascals_triangle_bench);
 // criterion_group!(benches, container_with_most_water_bench, length_of_longest_substring_bench, atoi_bench);
 criterion_main!(benches);

@@ -10,10 +10,16 @@ pub mod max_subset;
 pub mod palindrome_number;
 /// https://leetcode.com/problems/partition-labels/
 pub mod partition_labels;
+/// https://leetcode.com/problems/pascals-triangle/
+pub mod pascals_triangle;
 /// https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 pub mod remove_duplicates_from_sorted_array;
+/// https://leetcode.com/problems/remove-element/
+pub mod remove_element;
 /// https://leetcode.com/problems/roman-to-integer/
 pub mod roman_to_integer;
+/// https://leetcode.com/problems/search-insert-position/
+pub mod search_insert_position;
 /// https://leetcode.com/problems/string-to-integer-atoi/
 pub mod string_to_integer;
 /// https://leetcode.com/problems/valid-parentheses/
