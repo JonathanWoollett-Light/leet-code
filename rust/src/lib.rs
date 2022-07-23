@@ -1,5 +1,7 @@
 /// https://leetcode.com/problems/container-with-most-water/
 pub mod container_with_most_water;
+/// https://leetcode.com/problems/length-of-last-word/
+pub mod length_of_last_word;
 /// https://leetcode.com/problems/longest-common-prefix/
 pub mod longest_common_prefix;
 /// https://leetcode.com/problems/longest-substring-without-repeating-characters/
