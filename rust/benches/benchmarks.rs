@@ -3,7 +3,7 @@ use test_bin::{
     container_with_most_water::*, longest_substring_without_repeating_characters::*,
     palindrome_number::*, partition_labels::*, pascals_triangle::*,
     remove_duplicates_from_sorted_array::*, remove_element::*, roman_to_integer::*,
-    string_to_integer::*,
+    string_to_integer::*,plus_one::*
 };
 
 fn length_of_longest_substring_bench(c: &mut Criterion) {
@@ -116,7 +116,38 @@ fn pascals_triangle_bench(c: &mut Criterion) {
     c.bench_function("10", |b| b.iter(|| generate(10)));
     c.bench_function("20", |b| b.iter(|| generate(20)));
 }
-
-criterion_group!(benches, pascals_triangle_bench);
+fn plus_one_bench(c: &mut Criterion) {
+    c.bench_function("[1,2,3]", |b| {
+        b.iter_with_setup(
+            || vec![1,2,3],
+            |vec| plus_one(vec),
+        )
+    });
+    c.bench_function("[4,3,2,1]", |b| {
+        b.iter_with_setup(
+            || vec![4,3,2,1],
+            |vec| plus_one(vec),
+        )
+    });
+    c.bench_function("[9]", |b| {
+        b.iter_with_setup(
+            || vec![9],
+            |vec| plus_one(vec),
+        )
+    });
+    c.bench_function("[1,2,3,1,2,3,etc.]", |b| {
+        b.iter_with_setup(
+            || vec![1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3],
+            |vec| plus_one(vec),
+        )
+    });
+    c.bench_function("[9,9,9,etc.]", |b| {
+        b.iter_with_setup(
+            || vec![9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9],
+            |vec| plus_one(vec),
+        )
+    });
+}
+criterion_group!(benches, plus_one_bench);
 // criterion_group!(benches, container_with_most_water_bench, length_of_longest_substring_bench, atoi_bench);
 criterion_main!(benches);

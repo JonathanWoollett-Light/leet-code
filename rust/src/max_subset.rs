@@ -96,7 +96,7 @@ pub fn max_subset_iterative(x: &[i32]) -> i32 {
 }
 #[cfg(test)]
 mod tests {
-    use super::{max_subset, max_subset_iterative};
+    use super::*;
     #[test]
     fn max_subset_testa() {
         assert_eq!(max_subset_iterative(&[3, 5, -7, 8, 10]), 15);

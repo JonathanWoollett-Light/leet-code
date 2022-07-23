@@ -26,3 +26,5 @@ pub mod search_insert_position;
 pub mod string_to_integer;
 /// https://leetcode.com/problems/valid-parentheses/
 pub mod valid_parentheses;
+/// https://leetcode.com/problems/plus-one/
+pub mod plus_one;
