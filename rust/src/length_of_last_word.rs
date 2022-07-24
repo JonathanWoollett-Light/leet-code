@@ -4,7 +4,7 @@ pub fn length_of_last_word(s: String) -> i32 {
     unsafe {
         let bytes = s.as_bytes();
         let mut i = s.len();
-        while *bytes.get_unchecked(i-1) == 32 {
+        while *bytes.get_unchecked(i - 1) == 32 {
             i -= 1;
         }
         let end = i;
