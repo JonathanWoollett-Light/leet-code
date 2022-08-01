@@ -1,5 +1,7 @@
 /// https://leetcode.com/problems/add-binary/
 pub mod add_binary;
+/// https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+pub mod best_time_to_buy_and_sell_stock;
 /// https://leetcode.com/problems/container-with-most-water/
 pub mod container_with_most_water;
 /// https://leetcode.com/problems/length-of-last-word/

@@ -1,9 +1,9 @@
 use criterion::{criterion_group, criterion_main, Criterion};
 use test_bin::{
-    container_with_most_water::*, longest_substring_without_repeating_characters::*,
-    palindrome_number::*, partition_labels::*, pascals_triangle::*, plus_one::*,
-    remove_duplicates_from_sorted_array::*, remove_element::*, roman_to_integer::*,
-    string_to_integer::*,
+    best_time_to_buy_and_sell_stock::*, container_with_most_water::*,
+    longest_substring_without_repeating_characters::*, palindrome_number::*, partition_labels::*,
+    pascals_triangle::*, plus_one::*, remove_duplicates_from_sorted_array::*, remove_element::*,
+    roman_to_integer::*, string_to_integer::*,
 };
 
 fn length_of_longest_substring_bench(c: &mut Criterion) {
@@ -162,6 +162,34 @@ fn plus_one_bench(c: &mut Criterion) {
         )
     });
 }
-criterion_group!(benches, plus_one_bench);
-// criterion_group!(benches, container_with_most_water_bench, length_of_longest_substring_bench, atoi_bench);
+fn max_profit_bench(c: &mut Criterion) {
+    c.bench_function("max_profit big", |b| {
+        b.iter_with_setup(
+            || {
+                vec![
+                    4, 7, 5, 8, 3, 9, 1, 8, 3, 8, 25, 6234, 234, 3, 6, 77, 86, 345, 578, 346, 5678,
+                    23, 12, 648, 67, 36, 8, 34, 342, 0, 56, 123, 4, 578, 980, 345, 69, 23, 4, 7890,
+                    5467, 679, 457, 56797, 80, 456, 6780, 457, 2536, 7689, 3425, 7980, 1235, 689,
+                    780, 456, 9, 567, 6570, 346, 345,
+                ]
+            },
+            |vec| max_profit(vec),
+        )
+    });
+}
+
+criterion_group!(
+    benches,
+    length_of_longest_substring_bench,
+    atoi_bench,
+    is_palindrome_bench,
+    partition_labels_bench,
+    container_with_most_water_bench,
+    roman_to_int_bench,
+    remove_duplicates_from_sorted_array_bench,
+    remove_element_bench,
+    pascals_triangle_bench,
+    plus_one_bench,
+    max_profit_bench
+);
 criterion_main!(benches);
